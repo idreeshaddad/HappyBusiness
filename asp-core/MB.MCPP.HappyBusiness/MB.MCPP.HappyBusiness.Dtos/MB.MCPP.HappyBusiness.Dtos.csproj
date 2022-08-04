@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Pharmacists\" />
+    <Folder Include="Drugs\" />
+    <Folder Include="Deals\" />
+    <Folder Include="Classifications\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MB.MCPP.HappyBusiness.Utils\MB.MCPP.HappyBusiness.Utils.csproj" />
+  </ItemGroup>
+
 </Project>
