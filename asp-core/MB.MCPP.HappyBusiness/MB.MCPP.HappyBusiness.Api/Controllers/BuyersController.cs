@@ -56,12 +56,14 @@ namespace MB.MCPP.HappyBusiness.Api.Controllers
         }
 
         [HttpPost]
-        public async Task CreateBuyerAsync([FromBody] BuyerDto buyerDto)
+        public async Task<int> CreateBuyerAsync([FromBody] BuyerDto buyerDto)
         {
             var buyer = _mapper.Map<Buyer>(buyerDto);
 
             await _context.AddAsync(buyer);
             await _context.SaveChangesAsync();
+
+            return buyer.Id;
         }
 
         [HttpPut("{id}")]

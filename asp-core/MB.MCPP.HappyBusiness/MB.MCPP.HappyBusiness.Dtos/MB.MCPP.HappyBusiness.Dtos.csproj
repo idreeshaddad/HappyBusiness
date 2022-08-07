@@ -10,7 +10,6 @@
     <Folder Include="Pharmacists\" />
     <Folder Include="Drugs\" />
     <Folder Include="Deals\" />
-    <Folder Include="Classifications\" />
   </ItemGroup>
 
   <ItemGroup>
