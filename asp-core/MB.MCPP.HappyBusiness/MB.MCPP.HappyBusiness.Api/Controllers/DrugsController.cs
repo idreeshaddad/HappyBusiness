@@ -38,9 +38,21 @@ namespace MB.MCPP.HappyBusiness.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<DrugDetailsDto>> GetDrugById(int id)
         {
-            return "value";
+            var drug = await _context
+                                .Drugs
+                                .Include(d => d.Classification)
+                                .SingleOrDefaultAsync(d => d.Id == id);
+
+            if(drug == null)
+            {
+                return NotFound();
+            }
+
+            var drugdetailsDto = _mapper.Map<DrugDetailsDto>(drug);
+
+            return drugdetailsDto;
         }
 
         [HttpPost]
@@ -55,13 +67,42 @@ namespace MB.MCPP.HappyBusiness.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult> EditDrug(int id, [FromBody] DrugDto drugDto)
         {
+            if(id != drugDto.Id)
+            {
+                return BadRequest();
+            }
+
+            var drug = _mapper.Map<Drug>(drugDto);
+
+            try
+            {
+                _context.Update(drug);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new DbUpdateException($"Couldn't update Drug with ID=[{id}]", ex);
+            }
+
+            return Ok();
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> DeleteDrugById(int id)
         {
+            var drug = await _context.Drugs.FindAsync(id);
+
+            if (drug == null)
+            {
+                return NotFound();
+            }
+
+            _context.Remove(drug);
+            await _context.SaveChangesAsync();
+
+            return Ok();
         }
 
         #endregion
