@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Deals\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MB.MCPP.HappyBusiness.Utils\MB.MCPP.HappyBusiness.Utils.csproj" />
   </ItemGroup>
 
