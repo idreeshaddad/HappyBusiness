@@ -9,8 +9,14 @@ namespace MB.MCPP.HappyBusiness.Api.AutoMapperProfiles
         public DealAutoMapperProfile()
         {
             CreateMap<Deal, DealListDto>();
-            CreateMap<Deal, DealDetailsDto>();
             CreateMap<DealDto, Deal>();
+            CreateMap<Deal, DealDetailsDto>();
+
+            //CreateMap<Deal, DealDetailsDto>()
+            //    .ForMember(
+            //        dest => dest.DrugStreetNames, 
+            //        opts => opts.MapFrom(src => src.Drugs.Select(d => d.StreetName)));
+
         }
     }
 }

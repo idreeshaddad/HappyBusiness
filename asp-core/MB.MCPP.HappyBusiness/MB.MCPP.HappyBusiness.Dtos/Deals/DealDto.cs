@@ -1,14 +1,14 @@
 ﻿using MB.MCPP.HappyBusiness.Utils.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MB.MCPP.HappyBusiness.Dtos.Deals
 {
     public class DealDto
     {
+        public DealDto()
+        {
+            DrugIds = new List<int>();
+        }
+
         public int Id { get; set; }
         public PaymentType PaymentType { get; set; }
 
@@ -16,6 +16,6 @@ namespace MB.MCPP.HappyBusiness.Dtos.Deals
 
         public int PharmacistId { get; set; }
 
-        //public List<Drug> Drugs { get; set; }
+        public List<int> DrugIds { get; set; }
     }
 }

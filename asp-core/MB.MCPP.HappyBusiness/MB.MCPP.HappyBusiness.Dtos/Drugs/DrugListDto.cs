@@ -6,5 +6,7 @@
         public string StreetName { get; set; }
         public double Price { get; set; }
         public int Rating { get; set; }
+
+        public string ClassificationName { get; set; }
     }
 }
